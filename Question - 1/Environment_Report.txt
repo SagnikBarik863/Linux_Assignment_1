@@ -1,0 +1,42 @@
+ENVIRONMENT REPORT
+
+Username:
+sagnik_barik
+
+Groups:
+sagnik_barik adm cdrom sudo dip plugdev users
+
+Current Shell:
+/bin/bash
+
+Current Working Directory:
+/home/sagnik_barik/Linux-Lab-Assignment/Question1
+
+Files and Directories:
+total 8
+drwxr-xr-x 2 sagnik_barik sagnik_barik 4096 Jul  3 13:32 .
+drwxr-xr-x 3 sagnik_barik sagnik_barik 4096 Jul  3 13:32 ..
+
+Network Connectivity:
+--- google.com ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3006ms
+
+Observations
+
+1. whoami
+The command displays the username of the currently logged-in user. It confirms the active user account.
+
+2. groups
+The command lists all groups associated with the current user account. Group membership determines access permissions.
+
+3. echo $SHELL
+The command displays the default shell being used by the current user.
+
+4. pwd
+The command prints the current working directory where commands are being executed.
+
+5. ls -la
+The command lists all files and directories, including hidden files, along with their details.
+
+6. ping -c 4 google.com
+The command verifies network connectivity by sending packets to Google. Successful replies confirm internet access.
