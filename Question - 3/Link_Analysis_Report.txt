@@ -1,0 +1,175 @@
+# Link Analysis Report
+
+## Command 1
+
+**Command Executed:**
+
+```bash
+echo "Linux Lab Assignment" > original.txt
+```
+
+**Output:**
+File created successfully.
+
+**Observation:**
+A text file named `original.txt` was created for the link analysis experiment.
+
+---
+
+## Command 2
+
+**Command Executed:**
+
+```bash
+ln original.txt hardlink.txt
+```
+
+**Output:**
+Hard link created successfully.
+
+**Observation:**
+A hard link was created that points to the same inode as the original file.
+
+---
+
+## Command 3
+
+**Command Executed:**
+
+```bash
+ln -s original.txt symlink.txt
+```
+
+**Output:**
+Symbolic link created successfully.
+
+**Observation:**
+A symbolic link was created that references the original file by its pathname.
+
+---
+
+## Command 4
+
+**Command Executed:**
+
+```bash
+ls -li
+```
+
+**Output:**
+total 8
+1265 -rw-r--r-- 2 sagnik_barik sagnik_barik 21 Jul  3 14:25 hardlink.txt
+1265 -rw-r--r-- 2 sagnik_barik sagnik_barik 21 Jul  3 14:25 original.txt
+1508 lrwxrwxrwx 1 sagnik_barik sagnik_barik 12 Jul  3 14:25 symlink.txt -> original.txt
+
+**Observation:**
+The original file and hard link have the same inode number, while the symbolic link has a different inode number.
+
+---
+
+## Command 5
+
+**Command Executed:**
+
+```bash
+stat original.txt
+stat hardlink.txt
+stat symlink.txt
+```
+
+**Output:**
+  File: original.txt
+  size: 21              Blocks: 8          IO Block: 4096   regular file
+Device: 8,48    Inode: 1265        Links: 2
+Access: (0644/-rw-r--r--)  Uid: ( 1000/sagnik_barik)   Gid: ( 1000/sagnik_barik)
+Access: 2026-07-03 14:25:34.033786413 +0000
+Modify: 2026-07-03 14:25:34.033786413 +0000
+Change: 2026-07-03 14:25:45.649788539 +0000
+ Birth: 2026-07-03 14:25:34.033786413 +0000
+
+  File: hardlink.txt
+  size: 21              Blocks: 8          IO Block: 4096   regular file
+Device: 8,48    Inode: 1265        Links: 2
+Access: (0644/-rw-r--r--)  Uid: ( 1000/sagnik_barik)   Gid: ( 1000/sagnik_barik)
+Access: 2026-07-03 14:25:34.033786413 +0000
+Modify: 2026-07-03 14:25:34.033786413 +0000
+Change: 2026-07-03 14:25:45.649788539 +0000
+ Birth: 2026-07-03 14:25:34.033786413 +0000
+
+  File: 'symlink.txt' -> 'original.txt'
+  size: 12              Blocks: 0          IO Block: 4096   symbolic link
+Device: 8,48    Inode: 1508        Links: 1
+Access: (0777/lrwxrwxrwx)  Uid: ( 1000/sagnik_barik)   Gid: ( 1000/sagnik_barik)
+Access: 2026-07-03 14:26:07.409792568 +0000
+Modify: 2026-07-03 14:25:57.741811740 +0000
+Change: 2026-07-03 14:25:57.741811740 +0000
+ Birth: 2026-07-03 14:25:57.741811740 +0000
+
+**Observation:**
+The metadata shows that the original file and hard link share the same inode, whereas the symbolic link stores a reference to the original file.
+
+---
+
+## Command 6
+
+**Command Executed:**
+
+```bash
+rm original.txt
+```
+
+**Output:**
+Original file deleted successfully.
+
+**Observation:**
+The original file was removed while the hard link and symbolic link remained.
+
+---
+
+## Command 7
+
+**Command Executed:**
+
+```bash
+ls -l
+```
+
+**Output:**
+total 4
+-rw-r--r-- 1 sagnik_barik sagnik_barik 21 Jul  3 14:25 hardlink.txt
+lrwxrwxrwx 1 sagnik_barik sagnik_barik 12 Jul  3 14:25 symlink.txt -> original.txt
+
+**Observation:**
+The hard link still exists and is usable, whereas the symbolic link points to a missing target.
+
+---
+
+## Command 8
+
+**Command Executed:**
+
+```bash
+cat hardlink.txt
+```
+
+**Output:**
+Linux Lab Assignment
+
+**Observation:**
+The hard link still provides access to the file contents because it shares the original inode.
+
+---
+
+## Command 9
+
+**Command Executed:**
+
+```bash
+cat symlink.txt
+```
+
+**Output:**
+cat: symlink.txt: No such file or directory
+
+**Observation:**
+The symbolic link cannot access the file because its target has been deleted.
