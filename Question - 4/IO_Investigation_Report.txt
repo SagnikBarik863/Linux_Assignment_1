@@ -1,0 +1,177 @@
+# I/O Investigation Report
+
+## Command 1
+
+**Command Executed:**
+
+```bash
+touch logfile.txt
+```
+
+**Output:**
+File created successfully.
+
+**Observation:**
+A log file was created for investigating file access and input/output operations.
+
+---
+
+## Command 2
+
+**Command Executed:**
+
+```bash
+tail -f logfile.txt
+```
+
+**Output:**
+
+**Observation:**
+The command continuously monitors the log file and keeps it open for reading.
+
+---
+
+## Command 3
+
+**Command Executed:**
+
+```bash
+lsof logfile.txt
+```
+
+**Output:**
+COMMAND  PID         USER FD   TYPE DEVICE SIZE/OFF NODE NAME
+tail    8234 sagnik_barik 6r   REG   8,48        0 1593 logfile.txt
+
+**Observation:**
+The command lists the process currently accessing the log file and displays its open file descriptor.
+
+---
+
+## Command 4
+
+**Command Executed:**
+
+```bash
+ulimit -a
+```
+
+**Output:**
+real-time non-blocking time  (microseconds, -R) unlimited
+core file size              (blocks, -c) 0
+data seg size               (kbytes, -d) unlimited
+scheduling priority                 (-e) 0
+file size                   (blocks, -f) unlimited
+pending signals                     (-i) 27085
+max locked memory           (kbytes, -l) 65536
+max memory size             (kbytes, -m) unlimited
+open files                          (-n) 10240
+pipe size                (512 bytes, -p) 8
+POSIX message queues         (bytes, -q) 819200
+real-time priority                  (-r) 0
+stack size                  (kbytes, -s) 8192
+cpu time                   (seconds, -t) unlimited
+max user processes                  (-u) 27085
+virtual memory              (kbytes, -v) unlimited
+file locks                          (-x) unlimited
+
+**Observation:**
+The command displays the current resource limits applied to the user session.
+
+---
+
+## Command 5
+
+**Command Executed:**
+
+```bash
+echo "Linux Lab Assignment" > output.txt
+```
+
+**Output:**
+Data written successfully.
+
+**Observation:**
+The output redirection operator (`>`) created the file and stored the command output in it.
+
+---
+
+## Command 6
+
+**Command Executed:**
+
+```bash
+echo "Second Line" >> output.txt
+```
+
+**Output:**
+Data appended successfully.
+
+**Observation:**
+The append redirection operator (`>>`) added new content to the existing file without overwriting it.
+
+---
+
+## Command 7
+
+**Command Executed:**
+
+```bash
+ls nonexistentfile 2> error.txt
+```
+
+**Output:**
+
+**Observation:**
+The error message was redirected to `error.txt` using standard error redirection (`2>`).
+
+---
+
+## Command 8
+
+**Command Executed:**
+
+```bash
+cat error.txt
+```
+
+**Output:**
+ls: cannot access 'nonexistentfile': No such file or directory
+
+**Observation:**
+The contents of the redirected error file were displayed successfully.
+
+---
+
+## Command 9
+
+**Command Executed:**
+
+```bash
+ls > files.txt
+```
+
+**Output:**
+Directory listing redirected successfully.
+
+**Observation:**
+The standard output of the `ls` command was redirected to `files.txt`.
+
+---
+
+## Command 10
+
+**Command Executed:**
+
+```bash
+cat files.txt
+```
+
+**Output:**
+error.txt
+files.txt
+logfile.txt
+output.txt
+
+**Observation:**
+The redirected directory listing was displayed from the output file.
