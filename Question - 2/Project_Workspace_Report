@@ -1,0 +1,141 @@
+# Project Workspace Report
+
+## Command 1
+
+**Command Executed:**
+
+```bash
+mkdir -p ProjectWorkspace/{Docs,Source,Backup}
+```
+
+**Output:**
+Directory created successfully.
+
+**Observation:**
+The project workspace was created successfully with three subdirectories: Docs, Source, and Backup.
+
+---
+
+## Command 2
+
+**Command Executed:**
+
+```bash
+tree ProjectWorkspace
+```
+
+**Output:**
+ProjectWorkspace
+├── Backup
+├── Docs
+└── Source
+
+**Observation:**
+The command displays the complete directory structure of the project workspace and confirms that all required folders were created.
+
+---
+
+## Command 3
+
+**Command Executed:**
+
+```bash
+touch ProjectWorkspace/Docs/project_doc.txt
+touch ProjectWorkspace/Source/main.c
+touch ProjectWorkspace/Backup/backup.txt
+```
+
+**Output:**
+Files created successfully.
+
+**Observation:**
+Three sample files were created in their respective directories for further permission and ownership verification.
+
+---
+
+## Command 4
+
+**Command Executed:**
+
+```bash
+ls -l ProjectWorkspace
+```
+
+**Output:**
+total 12
+drwxr-xr-x 2 sagnik_barik sagnik_barik 4096 Jul  3 14:08 Backup
+drwxr-xr-x 2 sagnik_barik sagnik_barik 4096 Jul  3 14:07 Docs
+drwxr-xr-x 2 sagnik_barik sagnik_barik 4096 Jul  3 14:08 Source
+
+**Observation:**
+The command displays the default permissions assigned to the project directories before any modifications.
+
+---
+
+## Command 5
+
+**Command Executed:**
+
+```bash
+ls -ld ProjectWorkspace ProjectWorkspace/*
+```
+
+**Output:**
+drwxr-xr-x 5 sagnik_barik sagnik_barik 4096 Jul  3 14:07 ProjectWorkspace
+drwxr-xr-x 2 sagnik_barik sagnik_barik 4096 Jul  3 14:08 ProjectWorkspace/Backup
+drwxr-xr-x 2 sagnik_barik sagnik_barik 4096 Jul  3 14:07 ProjectWorkspace/Docs
+drwxr-xr-x 2 sagnik_barik sagnik_barik 4096 Jul  3 14:08 ProjectWorkspace/Source
+
+**Observation:**
+The command shows the ownership details of the workspace and its subdirectories, including the owner and group.
+
+---
+
+## Command 6
+
+**Command Executed:**
+
+```bash
+umask
+```
+
+**Output:**
+0022
+
+**Observation:**
+The current umask value determines the default permissions assigned to newly created files and directories.
+
+---
+
+## Command 7
+
+**Command Executed:**
+
+```bash
+chmod -R 750 ProjectWorkspace
+```
+
+**Output:**
+Permissions modified successfully.
+
+**Observation:**
+The permissions of the project workspace were changed recursively to provide secure access.
+
+---
+
+## Command 8
+
+**Command Executed:**
+
+```bash
+ls -l ProjectWorkspace
+```
+
+**Output:**
+total 12
+drwxr-x--- 2 sagnik_barik sagnik_barik 4096 Jul  3 14:08 Backup
+drwxr-x--- 2 sagnik_barik sagnik_barik 4096 Jul  3 14:07 Docs
+drwxr-x--- 2 sagnik_barik sagnik_barik 4096 Jul  3 14:08 Source
+
+**Observation:**
+The updated permissions confirm that only the owner has full access, the group has limited access, and others have no access.
